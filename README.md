@@ -22,3 +22,20 @@ Estatus soportados:
 2: bloqueado
 3: bloqueado
 6: inactivo
+
+
+
+
+parametros a configurar:
+
+puerto donde escucha el servicio:
+
+server.port=8081
+
+parametros relacionados a la base de datos (debe ser mariadb)
+spring.datasource.url=jdbc:mysql://172.19.12.16:3308/validacuentas_citi?zeroDateTimeBehavior=convertToNull&useSSL=false
+spring.datasource.username=rtrujillo
+spring.datasource.password=1234t
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+spring.jpa.properties.hibernate.jdbc.time_zone=America/Guatemala
