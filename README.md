@@ -39,3 +39,26 @@ spring.datasource.password=1234t
 spring.jpa.hibernate.ddl-auto=none
 spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 spring.jpa.properties.hibernate.jdbc.time_zone=America/Guatemala
+
+
+
+
+Repsuesta de citi respecto a los mapeos de estados banco/icg
+
+Status 0-activo
+	    1-activo
+	    2-bloqueada
+	    3-bloqueada	
+	    4-activo
+	    5-activa
+            6-inactiva
+            7-activa
+
+Si trae dos dígitos en status retornar como inactiva
+
+
+Record status, si viene C, retornar cancelada, caso contrario validar la primera tabla
+
+
+El endpoint que se expone es /validations/
+(recibe metodo post, acorde a documentacion de validacion de cuentas)

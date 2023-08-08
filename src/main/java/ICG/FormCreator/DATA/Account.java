@@ -20,6 +20,6 @@ public class Account {
     private String name;
     @Column(name = "status", nullable = false)
     private Integer status;
-    @Column(name = "reason", nullable = false)
-    private String reason;
+    @Column(name = "recordstatus", nullable = false)
+    private String recordstatus;
 }

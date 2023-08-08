@@ -45,16 +45,29 @@ public class AccountsController {
                 Iterable<Account> cuenta= repo.findByAccountAndProductAndCurrency(account,product,currency);
                 String name="";
                 int status=0;
-              int found=0;
+                int found=0;
+
                 for(Account a: cuenta){
                   logger.info("record found "+a.getName());
                   name=a.getName();
-                  if(a.getStatus()==0){
+                  if(a.getRecordstatus().compareTo("C")!=0){
+                    if((a.getStatus()==0)||(a.getStatus()==4)||(a.getStatus()==5)||(a.getStatus()==7)){
                     found=1;
+                    }
+                    if(a.getStatus()>10){
+                      logger.info("status is longer than 2 chars, returning inactive");
+                      found=0;
+                      status=6;
+                    }
+                    else{
+                      status=a.getStatus();
+                    }
+                  }else{
+                    logger.info("record status is not C " +a.getRecordstatus());
+                    status=10;
+                   
                   }
-                  else{
-                    status=a.getStatus();
-                  }
+                  
                 }
 
                 
@@ -82,6 +95,9 @@ public class AccountsController {
                     res.getJSONObject("payload").put("status","BLOC");
                   }else if(status==2){
                      res.getJSONObject("payload").put("status","BLOC");  
+                  }
+                   else if(status==10){
+                     res.getJSONObject("payload").put("status","CAN");  
                   }
                   else{
                      res.getJSONObject("payload").put("status","ERR");  
